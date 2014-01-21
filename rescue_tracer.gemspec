@@ -7,9 +7,8 @@ Gem::Specification.new do |spec|
   spec.name          = "rescue_tracer"
   spec.version       = RescueTracer::VERSION
   spec.authors       = ["Ryo Nakamura"]
-  spec.email         = ["ryo-nakamura@cookpad.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.email         = ["r7kamura@gmail.com"]
+  spec.summary       = "Log backtrace when rescue_from is called."
   spec.homepage      = ""
   spec.license       = "MIT"
 

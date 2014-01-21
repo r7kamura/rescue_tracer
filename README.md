@@ -1,29 +1,30 @@
 # RescueTracer
-
-TODO: Write a gem description
+Log backtrace when rescue_from is called.
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'rescue_tracer'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install rescue_tracer
+```ruby
+group :test do
+  gem "rescue_tracer"
+end
+```
 
 ## Usage
+Enable at spec/spec_helper.rb
 
-TODO: Write usage instructions here
+```ruby
+RescueTracer.enable!
+```
 
-## Contributing
+When `rescue_from` catches any exception, it logs the exception's information to Rails.logger.
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+```
+Started GET "/recipes" for 127.0.0.1 at 2014-01-21 17:17:57 +0900
+Processing by RecipesController#show as HTML
+  Recipes Load (0.4ms)  SELECT id FROM `recipes` WHERE `recipes`.`user_id` = '1'
+RuntimeError
+/Users/r7kamura/example/app/controllers/recipess_controller.rb:20:in `show'
+/Users/r7kamura/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/Users/r7kamura/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-4.0.2/lib/abstract_controller/base.rb:189:in `process_action'
+/Users/r7kamura/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:10:in `process_action'
+...
+```
